@@ -1,5 +1,6 @@
 package UnitTests.ShopEntityTests;
 
+import UnitTests.BaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EntitiesTests {
+public class EntitiesTests extends BaseTest {
 
     static Stream<Arguments> cartPrices() {
         return Stream.of(

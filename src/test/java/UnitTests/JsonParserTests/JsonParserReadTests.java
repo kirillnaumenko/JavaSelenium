@@ -1,5 +1,6 @@
 package UnitTests.JsonParserTests;
 
+import UnitTests.BaseTest;
 import com.google.gson.JsonSyntaxException;
 import org.junit.gen5.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,23 +13,23 @@ import shop.Cart;
 import java.io.File;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class JsonParserReadTests {
+public class JsonParserReadTests extends BaseTest {
 
     @ParameterizedTest
     @ValueSource(strings = { "sample-cart.json" })
-    void readFromFileTest(String fileName) {
+    public void readFromFileTest(String fileName) {
         Parser parser = new JsonParser();
         Cart cart;
 
         cart = parser.readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName));
         cart.showItems();
 
-        Assert.assertNotNull(cart);
+        Assert.assertNotNull(cart, "Fail to parse cart data from file");
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "empty-items-cart.json" })
-    void readFromEmptyItemsTest(String fileName) {
+    public void readFromEmptyItemsTest(String fileName) {
         Assertions.assertThrows(NullPointerException.class, () -> {
             new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems();
         });
@@ -36,7 +37,7 @@ public class JsonParserReadTests {
 
     @ParameterizedTest
     @ValueSource(strings = { "wrong-datatype-cart.json" })
-    void readFromWrongDataTypeTest(String fileName) {
+    public void readFromWrongDataTypeTest(String fileName) {
         Assertions.assertThrows(NumberFormatException.class, () -> {
             new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems();
         });
@@ -44,7 +45,7 @@ public class JsonParserReadTests {
 
     @ParameterizedTest
     @ValueSource(strings = { "json-with-errors.json" })
-    void readFromFileWithSyntaxErrorExceptionTest(String fileName) {
+    public void readFromFileWithSyntaxErrorExceptionTest(String fileName) {
         Assertions.assertThrows(JsonSyntaxException.class, () -> {
             new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName));
         });
@@ -52,7 +53,7 @@ public class JsonParserReadTests {
 
     @ParameterizedTest
     @ValueSource(strings = { "xmlfile.xml" })
-    void readFromWrongExtensionTypeTest(String fileName) {
+    public void readFromWrongExtensionTypeTest(String fileName) {
         Assertions.assertThrows(JsonSyntaxException.class, () -> {
             new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems();
         });
@@ -61,7 +62,7 @@ public class JsonParserReadTests {
 
     @ParameterizedTest
     @ValueSource(strings = { "non-existing.json"})
-    void readFromFileNoSuchFileExceptionTest(String fileName) {
+    public void readFromFileNoSuchFileExceptionTest(String fileName) {
         Assertions.assertThrows(NoSuchFileException.class, () -> {
             new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName));
         });
@@ -69,7 +70,7 @@ public class JsonParserReadTests {
 
     @ParameterizedTest
     @ValueSource(strings = { "non-existing.json", "json-with-errors.json", "empty-items-cart.json","wrong-datatype-cart.json", "xmlfile.xml" })
-    void readFromFileExceptionsTest(String fileName) {
+    public void readFromFileExceptionsTest(String fileName) {
         assertThatExceptionOfType(Exception.class)
                 .isThrownBy(() -> new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems());
     }

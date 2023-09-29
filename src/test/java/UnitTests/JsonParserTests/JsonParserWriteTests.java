@@ -1,5 +1,7 @@
 package UnitTests.JsonParserTests;
 
+import UnitTests.BaseTest;
+import Utils.TestLogger;
 import org.junit.gen5.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +18,7 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonParserWriteTests {
+public class JsonParserWriteTests extends BaseTest {
     private Cart cart;
 
     @BeforeEach
@@ -28,9 +30,9 @@ public class JsonParserWriteTests {
     void CleanUp(){
         File cartFile = new File("src/main/resources/" + cart.getCartName()+ ".json");
         if (cartFile.delete()) {
-            System.out.println("Deleted the file: " + cartFile.getName());
+            TestLogger.getLogger().info("Deleted the file: " + cartFile.getName());
         } else {
-            System.out.println("Failed to delete the file.");
+            TestLogger.getLogger().error("Failed to delete the file.");
         }
     }
 
