@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parser suite">
+    <test name="Read">
+        <classes>
+            <class name = "Task20.JsonParserTests.JsonParserReadTests">
+                <methods>
+                    <include name="readFromEmptyItemsTest" />
+                </methods>
+            </class>
+            <class name = "Task20.JsonParserTests.JsonParserWriteTests">
+                <methods>
+                    <include name="writeEmptyObject" />
+                    <include name="writeNullObject" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

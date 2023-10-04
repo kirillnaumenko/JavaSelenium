@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke suite">
+    <test name="Parser">
+        <classes>
+            <class name = "Task20.JsonParserTests.JsonParserReadTests">
+                <methods>
+                    <include name="readFromFileTest" />
+                </methods>
+            </class>
+            <class name = "Task20.JsonParserTests.JsonParserWriteTests">
+                <methods>
+                    <include name="writeObjectToFileTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

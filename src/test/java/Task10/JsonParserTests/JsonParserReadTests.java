@@ -1,6 +1,5 @@
-package UnitTests.JsonParserTests;
+package Task10.JsonParserTests;
 
-import UnitTests.BaseTest;
 import com.google.gson.JsonSyntaxException;
 import org.junit.gen5.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,7 +12,7 @@ import shop.Cart;
 import java.io.File;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class JsonParserReadTests extends BaseTest {
+public class JsonParserReadTests {
 
     @ParameterizedTest
     @ValueSource(strings = { "sample-cart.json" })
@@ -21,7 +20,7 @@ public class JsonParserReadTests extends BaseTest {
         Parser parser = new JsonParser();
         Cart cart;
 
-        cart = parser.readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName));
+        cart = parser.readFromFile(new File("./src/test/java/Task10/TestData/" + fileName));
         cart.showItems();
 
         Assert.assertNotNull(cart, "Fail to parse cart data from file");
@@ -31,7 +30,7 @@ public class JsonParserReadTests extends BaseTest {
     @ValueSource(strings = { "empty-items-cart.json" })
     public void readFromEmptyItemsTest(String fileName) {
         Assertions.assertThrows(NullPointerException.class, () -> {
-            new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems();
+            new JsonParser().readFromFile(new File("./src/test/java/Task10/TestData/" + fileName)).showItems();
         });
     }
 
@@ -39,7 +38,7 @@ public class JsonParserReadTests extends BaseTest {
     @ValueSource(strings = { "wrong-datatype-cart.json" })
     public void readFromWrongDataTypeTest(String fileName) {
         Assertions.assertThrows(NumberFormatException.class, () -> {
-            new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems();
+            new JsonParser().readFromFile(new File("./src/test/java/Task10/TestData/" + fileName)).showItems();
         });
     }
 
@@ -47,7 +46,7 @@ public class JsonParserReadTests extends BaseTest {
     @ValueSource(strings = { "json-with-errors.json" })
     public void readFromFileWithSyntaxErrorExceptionTest(String fileName) {
         Assertions.assertThrows(JsonSyntaxException.class, () -> {
-            new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName));
+            new JsonParser().readFromFile(new File("./src/test/java/Task10/TestData/" + fileName));
         });
     }
 
@@ -55,7 +54,7 @@ public class JsonParserReadTests extends BaseTest {
     @ValueSource(strings = { "xmlfile.xml" })
     public void readFromWrongExtensionTypeTest(String fileName) {
         Assertions.assertThrows(JsonSyntaxException.class, () -> {
-            new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems();
+            new JsonParser().readFromFile(new File("./src/test/java/Task10/TestData/" + fileName)).showItems();
         });
     }
 
@@ -64,7 +63,7 @@ public class JsonParserReadTests extends BaseTest {
     @ValueSource(strings = { "non-existing.json"})
     public void readFromFileNoSuchFileExceptionTest(String fileName) {
         Assertions.assertThrows(NoSuchFileException.class, () -> {
-            new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName));
+            new JsonParser().readFromFile(new File("./src/test/java/Task10/TestData/" + fileName));
         });
     }
 
@@ -72,6 +71,6 @@ public class JsonParserReadTests extends BaseTest {
     @ValueSource(strings = { "non-existing.json", "json-with-errors.json", "empty-items-cart.json","wrong-datatype-cart.json", "xmlfile.xml" })
     public void readFromFileExceptionsTest(String fileName) {
         assertThatExceptionOfType(Exception.class)
-                .isThrownBy(() -> new JsonParser().readFromFile(new File("./src/test/java/UnitTests/TestData/" + fileName)).showItems());
+                .isThrownBy(() -> new JsonParser().readFromFile(new File("./src/test/java/Task10/TestData/" + fileName)).showItems());
     }
 }

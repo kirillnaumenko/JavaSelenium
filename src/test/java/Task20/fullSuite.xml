@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Full suite">
+    <test name="Full Regression">
+        <classes>
+            <class name = "Task20.JsonParserTests.JsonParserReadTests"/>
+            <class name = "Task20.JsonParserTests.JsonParserWriteTests"/>
+            <class name = "Task20.ShopEntityTests.EntitiesTests"/>
+        </classes>
+    </test>
+</suite>
