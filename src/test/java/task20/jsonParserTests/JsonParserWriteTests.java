@@ -1,7 +1,6 @@
-package Task20.JsonParserTests;
+package task20.jsonParserTests;
 
 import lombok.extern.log4j.Log4j2;
-import org.junit.gen5.api.Assertions;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import parser.JsonParser;
@@ -9,12 +8,8 @@ import parser.Parser;
 import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
-
 import java.io.File;
 import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Log4j2
 public class JsonParserWriteTests {
@@ -36,7 +31,7 @@ public class JsonParserWriteTests {
         }
     }
 
-    @Test
+    @Test(description = "Write object to json file and verify file data")
     public void writeObjectToFileTest(){
         RealItem car = new RealItem();
         car.setName("Audi");
@@ -63,7 +58,7 @@ public class JsonParserWriteTests {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(description = "Write object with empty fields to json file and verify file data")
     public void writeEmptyObject(){
         Parser parser = new JsonParser();
         parser.writeToFile(cart);
@@ -77,7 +72,7 @@ public class JsonParserWriteTests {
         softAssert.assertAll();
     }
 
-    @Test(expectedExceptions = NullPointerException.class)
+    @Test(expectedExceptions = NullPointerException.class, description = "Write null object to json file and verify exception")
     @Ignore("Some reason to ignore test")
     public void writeNullObject(){
         new JsonParser().writeToFile(null);

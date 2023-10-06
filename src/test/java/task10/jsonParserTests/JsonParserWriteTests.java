@@ -1,9 +1,6 @@
-package Task10.JsonParserTests;
+package task10.jsonParserTests;
 
-import Task20.JsonParserTests.JsonParserReadTests;
 import lombok.extern.log4j.Log4j2;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.gen5.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -3,12 +3,12 @@
 <suite name="Smoke suite">
     <test name="Parser">
         <classes>
-            <class name = "Task20.JsonParserTests.JsonParserReadTests">
+            <class name = "task20.jsonParserTests.JsonParserReadTests">
                 <methods>
                     <include name="readFromFileTest" />
                 </methods>
             </class>
-            <class name = "Task20.JsonParserTests.JsonParserWriteTests">
+            <class name = "task20.jsonParserTests.JsonParserWriteTests">
                 <methods>
                     <include name="writeObjectToFileTest" />
                 </methods>

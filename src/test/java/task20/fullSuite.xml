@@ -3,9 +3,9 @@
 <suite name="Full suite">
     <test name="Full Regression">
         <classes>
-            <class name = "Task20.JsonParserTests.JsonParserReadTests"/>
-            <class name = "Task20.JsonParserTests.JsonParserWriteTests"/>
-            <class name = "Task20.ShopEntityTests.EntitiesTests"/>
+            <class name = "task20.jsonParserTests.JsonParserReadTests"/>
+            <class name = "task20.jsonParserTests.JsonParserWriteTests"/>
+            <class name = "task20.shopEntityTests.EntitiesTests"/>
         </classes>
     </test>
 </suite>

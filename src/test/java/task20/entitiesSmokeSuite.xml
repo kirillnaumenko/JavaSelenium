@@ -9,7 +9,7 @@
             </run>
         </groups>
         <classes>
-            <class name = "Task20.ShopEntityTests.EntitiesTests"/>
+            <class name = "task20.shopEntityTests.EntitiesTests"/>
         </classes>
     </test>
 </suite>

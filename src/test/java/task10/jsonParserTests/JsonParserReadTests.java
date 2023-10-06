@@ -1,4 +1,4 @@
-package Task10.JsonParserTests;
+package task10.jsonParserTests;
 
 import com.google.gson.JsonSyntaxException;
 import org.junit.gen5.api.Assertions;

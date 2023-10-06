@@ -1,22 +1,29 @@
-package Task20.ShopEntityTests;
+package task10.shopEntityTests;
 
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EntitiesTests {
 
-    @DataProvider(name = "cartParameters")
-    public Object[][] incorrectFilesData(){
-        return new Object[][] {{ 10, 20,36 },
-                { 20, 30, 60 }};
+    static Stream<Arguments> cartPrices() {
+        return Stream.of(
+                Arguments.of(10.0, 20.0, 36.0),
+                Arguments.of(20.0, 30.0, 60.0)
+        );
     }
 
-    @Test(dataProvider = "cartParameters", groups = { "smoke" })
+    @ParameterizedTest
+    @MethodSource("cartPrices")
     void addItemsToCartTest(double firstPrice, double secondPrice, double expectedTotal){
 
         Cart cart = new Cart("Test cart");
@@ -35,7 +42,9 @@ public class EntitiesTests {
         assertEquals(expectedTotal , cart.getTotalPrice());
     }
 
-    @Test(dataProvider = "cartParameters", description = "BUG: total not recalculated after item removing", groups = { "smoke", "bug" })
+    @ParameterizedTest
+    @MethodSource("cartPrices")
+    @DisplayName("BUG: total not recalculated after item removing")
     void removeItemsFromCartTest(double firstPrice, double secondPrice, double expectedTotal){
 
         Cart cart = new Cart("Test cart");
@@ -56,7 +65,7 @@ public class EntitiesTests {
         assertNotEquals(expectedTotal , cart.getTotalPrice());
     }
 
-    @Test(groups = { "regression" })
+    @Test
     void createRealItemTest(){
         double expectedPrice = 100;
         double expectedWeight = 1560;
@@ -66,15 +75,14 @@ public class EntitiesTests {
         car.setPrice(expectedPrice);
         car.setWeight(expectedWeight);
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(expectedPrice, car.getPrice());
-        softAssert.assertEquals(expectedWeight, car.getWeight());
-        softAssert.assertTrue((car.toString()).contains(expectedDescription));
-
-        softAssert.assertAll();
+        assertAll("Check cart object",
+                () -> assertEquals(expectedPrice, car.getPrice()),
+                () -> assertEquals(expectedWeight, car.getWeight()),
+                () -> assertThat(car.toString()).contains(expectedDescription)
+        );
     }
 
-    @Test(groups = { "regression" })
+    @Test
     void createVirtualItemTest(){
         double expectedPrice = 100;
         double expectedDiskSize = 1560;
@@ -84,11 +92,10 @@ public class EntitiesTests {
         disk.setPrice(expectedPrice);
         disk.setSizeOnDisk(expectedDiskSize);
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(expectedPrice, disk.getPrice());
-        softAssert.assertEquals(expectedDiskSize, disk.getSizeOnDisk());
-        softAssert.assertTrue((disk.toString()).contains(expectedDescription));
-
-        softAssert.assertAll();
+        assertAll("Check cart object",
+                () -> assertEquals(expectedPrice, disk.getPrice()),
+                () -> assertEquals(expectedDiskSize, disk.getSizeOnDisk()),
+                () -> assertThat(disk.toString()).contains(expectedDescription)
+        );
     }
 }
