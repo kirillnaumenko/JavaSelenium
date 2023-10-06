@@ -1,7 +1,6 @@
 package task20.jsonParserTests;
 
 import com.google.gson.JsonSyntaxException;
-import jdk.jfr.Description;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -14,7 +13,7 @@ import java.io.File;
 
 @Log4j2
 public class JsonParserReadTests {
-    private static final String  TEST_DATA_ROOT = "./src/test/java/Task20/TestData/";
+    private static final String  TEST_DATA_ROOT = "./src/test/java/task20/TestData/";
 
     @DataProvider(name = "correctFiles")
     public Object[][] correctFilesData(){
