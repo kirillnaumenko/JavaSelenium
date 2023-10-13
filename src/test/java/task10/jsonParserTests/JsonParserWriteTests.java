@@ -1,7 +1,6 @@
-package UnitTests.JsonParserTests;
+package task10.jsonParserTests;
 
-import UnitTests.BaseTest;
-import Utils.TestLogger;
+import lombok.extern.log4j.Log4j2;
 import org.junit.gen5.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,30 +13,30 @@ import shop.RealItem;
 import shop.VirtualItem;
 import java.io.File;
 import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JsonParserWriteTests extends BaseTest {
+@Log4j2
+public class JsonParserWriteTests {
     private Cart cart;
 
     @BeforeEach
-    void SetUp(){
+    void setUp(){
         cart = new Cart("sample-cart" + LocalDateTime.now().getSecond());
     }
 
     @AfterEach
-    void CleanUp(){
+    void cleanUp(){
         File cartFile = new File("src/main/resources/" + cart.getCartName()+ ".json");
         if (cartFile.delete()) {
-            TestLogger.getLogger().info("Deleted the file: " + cartFile.getName());
+            log.info("Deleted the file: " + cartFile.getName());
         } else {
-            TestLogger.getLogger().error("Failed to delete the file.");
+            log.error("Failed to delete the file.");
         }
     }
 
     @Test
-    void writeObjectToFileTest(){
+    public void writeObjectToFileTest(){
         RealItem car = new RealItem();
         car.setName("Audi");
         car.setPrice(32026.9);
@@ -62,7 +61,7 @@ public class JsonParserWriteTests extends BaseTest {
     }
 
     @Test
-    void writeEmptyObject(){
+    public void writeEmptyObjectTest(){
         Parser parser = new JsonParser();
         parser.writeToFile(cart);
 
@@ -75,7 +74,7 @@ public class JsonParserWriteTests extends BaseTest {
 
     @Disabled("Some reason to disable test")
     @Test
-    void writeNullObject(){
+    public void writeNullObjectTest(){
         Assertions.assertThrows(NullPointerException.class, () -> {
             new JsonParser().writeToFile(null);
         });

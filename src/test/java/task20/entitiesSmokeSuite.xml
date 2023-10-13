@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke suite">
+    <test name="Entities">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <exclude name="bug"/>
+            </run>
+        </groups>
+        <classes>
+            <class name = "task20.shopEntityTests.EntitiesTests"/>
+        </classes>
+    </test>
+</suite>
