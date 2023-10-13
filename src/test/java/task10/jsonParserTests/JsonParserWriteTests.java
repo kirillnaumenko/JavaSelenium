@@ -61,7 +61,7 @@ public class JsonParserWriteTests {
     }
 
     @Test
-    public void writeEmptyObject(){
+    public void writeEmptyObjectTest(){
         Parser parser = new JsonParser();
         parser.writeToFile(cart);
 
@@ -74,7 +74,7 @@ public class JsonParserWriteTests {
 
     @Disabled("Some reason to disable test")
     @Test
-    public void writeNullObject(){
+    public void writeNullObjectTest(){
         Assertions.assertThrows(NullPointerException.class, () -> {
             new JsonParser().writeToFile(null);
         });

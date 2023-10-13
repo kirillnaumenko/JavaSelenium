@@ -16,12 +16,12 @@ public class JsonParserReadTests {
     private static final String  TEST_DATA_ROOT = "./src/test/java/task20/TestData/";
 
     @DataProvider(name = "correctFiles")
-    public Object[][] correctFilesData(){
+    public Object[][] correctFilesDataTest(){
         return new Object[][] {{ TEST_DATA_ROOT + "sample-cart.json" }};
     }
 
     @DataProvider(name = "incorrectFiles")
-    public Object[][] incorrectFilesData(){
+    public Object[][] incorrectFilesDataTest(){
         return new Object[][] {{ TEST_DATA_ROOT + "empty-items-cart.json" },
                 { TEST_DATA_ROOT + "json-with-errors.json" },
                 { TEST_DATA_ROOT + "wrong-datatype-cart.json" },

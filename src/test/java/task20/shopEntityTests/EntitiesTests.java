@@ -11,7 +11,7 @@ import shop.VirtualItem;
 public class EntitiesTests {
 
     @DataProvider(name = "cartParameters")
-    public Object[][] incorrectFilesData(){
+    public Object[][] incorrectFilesDataTest(){
         return new Object[][] {{ 10, 20,36 },
                 { 20, 30, 60 }};
     }

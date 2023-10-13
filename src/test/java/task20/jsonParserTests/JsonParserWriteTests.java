@@ -11,6 +11,8 @@ import shop.VirtualItem;
 import java.io.File;
 import java.time.LocalDateTime;
 
+import static org.testng.Assert.assertThrows;
+
 @Log4j2
 public class JsonParserWriteTests {
 
@@ -59,7 +61,7 @@ public class JsonParserWriteTests {
     }
 
     @Test(description = "Write object with empty fields to json file and verify file data")
-    public void writeEmptyObject(){
+    public void writeEmptyObjectTest(){
         Parser parser = new JsonParser();
         parser.writeToFile(cart);
 
@@ -72,9 +74,9 @@ public class JsonParserWriteTests {
         softAssert.assertAll();
     }
 
-    @Test(expectedExceptions = NullPointerException.class, description = "Write null object to json file and verify exception")
+    @Test(description = "Write null object to json file and verify exception")
     @Ignore("Some reason to ignore test")
-    public void writeNullObject(){
-        new JsonParser().writeToFile(null);
+    public void writeNullObjectTest(){
+        assertThrows(NullPointerException.class, () -> new JsonParser().writeToFile(null));
     }
 }
