@@ -183,27 +183,6 @@ public class SeleniumEasyTests {
             }
         }
 
-//        for (int i = 0; i <= pageCountToRead; i++) {
-//            WebElement table = driver.findElement(By.id("example"));
-//            List<WebElement> rows = table.findElements(By.tagName("tr"));
-//            for (int e = 1; e < rows.size(); e++) {
-//                List<WebElement> columns = rows.get(i).findElements(By.tagName("td"));
-//
-//                String name = columns.get(0).getText();
-//                String position = columns.get(1).getText();
-//                String office = columns.get(2).getText();
-//                int age = Integer.parseInt(columns.get(3).getText());
-//                String startDate = columns.get(4).getText();
-//                String salary = columns.get(5).getText();
-//
-//                TableModel model = new TableModel(name, position, office, age, startDate, salary);
-//                tableModels.add(model);
-//            }
-//
-//            By nextButtonLocator = By.id("example_next");
-//            driver.findElement(nextButtonLocator).click();
-//        }
-
         return tableModels;
     }
 
