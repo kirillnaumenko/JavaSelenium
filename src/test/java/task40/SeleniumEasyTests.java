@@ -41,28 +41,31 @@ public class SeleniumEasyTests {
     }
 
     @Test
-    public void Point5Test() {
+    public void point5Test() {
         By multiselectValuesLocator = By.cssSelector("#multi-select option");
 
-        driver.get("https://demo.seleniumeasy.com/basic-select-dropdown-demo.html");
+        driver.get(Urls.task5Url);
 
         List<String> countries = this.getRandomCountries(3);
 
         for (String country: countries) {
             WebElement element = driver.findElements(multiselectValuesLocator)
                     .stream().filter(x -> x.getText().equals(country)).findFirst().orElse(null);
-            element.click();
-
-            Assert.assertTrue(element.isSelected());
+            if (element != null) {
+                element.click();
+                Assert.assertTrue(element.isSelected(), "Element was found but not selected");
+            } else {
+                Assert.fail(String.format("Element {0} was not found", country));
+            }
         }
     }
 
     @Test
-    public void Point6JavaScriptConfirmBoxOkTest() {
+    public void point6JavaScriptConfirmBoxOkTest() {
         By clickMeButtonLocator = By.xpath("//button[@onclick = 'myConfirmFunction()']");
         By statusMessageLocator = By.id("confirm-demo");
 
-        driver.get("https://demo.seleniumeasy.com/javascript-alert-box-demo.html");
+        driver.get(Urls.task6Url);
 
         WebElement clickMeButton = driver.findElement(clickMeButtonLocator);
         clickMeButton.click();
@@ -75,11 +78,11 @@ public class SeleniumEasyTests {
     }
 
     @Test
-    public void Point6JavaScriptConfirmBoxCancelTest() {
+    public void point6JavaScriptConfirmBoxCancelTest() {
         By clickMeButtonLocator = By.xpath("//button[@onclick = 'myConfirmFunction()']");
         By statusMessageLocator = By.id("confirm-demo");
 
-        driver.get("https://demo.seleniumeasy.com/javascript-alert-box-demo.html");
+        driver.get(Urls.task6Url);
 
         WebElement clickMeButton = driver.findElement(clickMeButtonLocator);
         clickMeButton.click();
@@ -92,12 +95,12 @@ public class SeleniumEasyTests {
     }
 
     @Test
-    public void Point6JavaScriptPromptBoxTest() {
+    public void point6JavaScriptPromptBoxTest() {
         By clickMeButtonLocator = By.xpath("//button[@onclick = 'myPromptFunction()']");
         By statusMessageLocator = By.id("prompt-demo");
         String testMessage = "Test message";
 
-        driver.get("https://demo.seleniumeasy.com/javascript-alert-box-demo.html");
+        driver.get(Urls.task6Url);
 
         WebElement clickMeButton = driver.findElement(clickMeButtonLocator);
         clickMeButton.click();
@@ -111,11 +114,11 @@ public class SeleniumEasyTests {
     }
 
     @Test
-    public void Point7WaitForUserTest() {
+    public void point7WaitForUserTest() {
         By getNewUserButtonLocator = By.id("save");
         By photoLocator = By.cssSelector("#loading img");
 
-        driver.get("https://demo.seleniumeasy.com/dynamic-data-loading-demo.html");
+        driver.get(Urls.task7Url);
 
         WebElement getNewUserButton = driver.findElement(getNewUserButtonLocator);
         getNewUserButton.click();
@@ -124,13 +127,15 @@ public class SeleniumEasyTests {
     }
 
     @Test
-    public void Point8RefreshDownloadTest() {
-        driver.get("https://demo.seleniumeasy.com/bootstrap-download-progress-demo.html");
+    public void point8RefreshDownloadTest() {
+        driver.get(Urls.task8Url);
         WebElement downloadButton = driver.findElement(By.id("cricle-btn"));
         WebElement downloadBar = driver.findElement(By.cssSelector(".percenttext"));
 
         downloadButton.click();
 
+        int maxIterations = 50;
+        int currentIteration = 0;
         while (true) {
             String progressText = downloadBar.getText();
             int progress = Integer.parseInt(progressText.replaceAll("%", ""));
@@ -139,12 +144,18 @@ public class SeleniumEasyTests {
                 driver.navigate().refresh();
                 break;
             }
+
+            currentIteration++;
+            if (currentIteration >= maxIterations) {
+                Assert.fail("Reached maximum iterations");
+                break;
+            }
         }
     }
 
     @Test
-    public void Point9ReadTableTest() {
-        driver.get("https://demo.seleniumeasy.com/table-sort-search-demo.html");
+    public void point9ReadTableTest() {
+        driver.get(Urls.task9Url);
         Select pageSize = new Select(driver.findElement(By.cssSelector("#example_length select")));
         pageSize.selectByValue("10");
 
