@@ -1,12 +1,11 @@
-package task60.pageObject;
+package task60.pageFactory;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import task60.pageObject.core.BaseTest;
-import task60.pageObject.pages.FrontPage;
+import task60.pageFactory.core.BaseTest;
+import task60.pageFactory.pages.FrontPage;
 
 import java.util.stream.Stream;
 

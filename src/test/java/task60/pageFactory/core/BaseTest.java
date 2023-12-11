@@ -1,14 +1,11 @@
-package task60.pageObject.core;
+package task60.pageFactory.core;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import task60.Urls;
 import task60.WebDriverSingleton;
-import task60.pageObject.pages.FrontPage;
+import task60.pageFactory.pages.FrontPage;
 
 import java.time.Duration;
 
