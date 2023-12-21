@@ -17,13 +17,13 @@ public abstract class BaseTest {
 
     @BeforeEach
     public void setUp(){
-        driver = WebDriverSingleton.getInstance();
+        driver = WebDriverSingleton.getInstance().getDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterEach
     public void cleanUp(){
-        WebDriverSingleton.disposeDriver();
+        WebDriverSingleton.getInstance().disposeDriver();
     }
 
     public FrontPage openWebSite(){
