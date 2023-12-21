@@ -1,5 +1,5 @@
 package task60;
 
 public class Urls {
-    public static final String magentoTestingUrl = "https://magento.softwaretestingboard.com/";
+    public static final String MAGENTO_TESTING_URL = "https://magento.softwaretestingboard.com/";
 }
