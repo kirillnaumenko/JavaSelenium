@@ -25,7 +25,7 @@ public abstract class BaseTest {
 
     public FrontPage openWebSite(){
         FrontPage frontPage = new FrontPage(driver);
-        driver.get(Urls.magentoTestingUrl);
+        driver.get(Urls.MAGENTO_TESTING_URL);
 
         return frontPage;
     }
