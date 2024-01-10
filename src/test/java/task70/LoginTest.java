@@ -1,11 +1,13 @@
 package task70;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -14,7 +16,9 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
+@Log4j2
 public class LoginTest{
     private WebDriver driver;
     private WebDriverWait wait;
@@ -46,12 +50,11 @@ public class LoginTest{
         driver.findElement(Locators.loginPageButtonLocator).click();
 
         // Enter user
-        driver.findElement(Locators.userNameInputLocator).sendKeys(user);
-        driver.findElement(Locators.loginButtonLocator).click();
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(Locators.loadingSpinnerLocator));
-
-        // Enter password and login
-        driver.findElement(Locators.passwordInputLocator).sendKeys(password);
+        Assert.assertTrue(driver.findElement(Locators.userNameInputLocator).isDisplayed());
+        assertAll("Check field loading",
+                () -> assertTrue(driver.findElement(Locators.userNameInputLocator).isDisplayed(), "User name field was not loaded"),
+                () -> assertTrue(driver.findElement(Locators.passwordInputLocator).isDisplayed(), "Password field was not loaded")
+        );
     }
 
     private void imitateThatImDefinitelyNotARobot() {
@@ -68,7 +71,7 @@ public class LoginTest{
             FileUtils.copyFile(scrFile, new File("src/test/java/task70/screenshotsRepository/screenshot.png"));
             return ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         } catch (IOException e) {
-            System.out.println("Failed to save screenshot: " + e.getMessage());
+            log.info("Failed to save screenshot: " + e.getMessage());
             return null;
         }
     }
