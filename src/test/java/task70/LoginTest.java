@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -47,13 +46,13 @@ public class LoginTest{
         // Navigate to login page
         this.imitateThatImDefinitelyNotARobot();
         this.takeScreenshot(driver);
-        driver.findElement(Locators.loginPageButtonLocator).click();
+        driver.findElement(Locators.LOGIN_PAGE_BUTTON_LOCATOR).click();
 
         // Enter user
-        Assert.assertTrue(driver.findElement(Locators.userNameInputLocator).isDisplayed());
+        Assert.assertTrue(driver.findElement(Locators.USER_NAME_INPUT_LOCATOR).isDisplayed());
         assertAll("Check field loading",
-                () -> assertTrue(driver.findElement(Locators.userNameInputLocator).isDisplayed(), "User name field was not loaded"),
-                () -> assertTrue(driver.findElement(Locators.passwordInputLocator).isDisplayed(), "Password field was not loaded")
+                () -> assertTrue(driver.findElement(Locators.USER_NAME_INPUT_LOCATOR).isDisplayed(), "User name field was not loaded"),
+                () -> assertTrue(driver.findElement(Locators.PASSWORD_INPUT_LOCATOR).isDisplayed(), "Password field was not loaded")
         );
     }
 
