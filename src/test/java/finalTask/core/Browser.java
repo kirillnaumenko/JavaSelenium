@@ -1,27 +1,27 @@
-package task60;
+package finalTask.core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public final class WebDriverSingleton {
-    private static WebDriverSingleton instance;
+public final class Browser {
+    private static Browser instance;
     private WebDriver driver;
 
-    private WebDriverSingleton() {
+    private Browser() {
         driver = new FirefoxDriver();
     }
-    public static WebDriverSingleton getInstance() {
+    public static Browser getInstance() {
         if (instance == null) {
-            instance = new WebDriverSingleton();
+            instance = new Browser();
         }
         return instance;
     }
 
-    public WebDriver getDriver() {
+    public WebDriver getBrowser() {
         return driver;
     }
 
-    public void disposeDriver(){
+    public void disposeBrowser(){
         driver.close();
         instance = null;
     }
