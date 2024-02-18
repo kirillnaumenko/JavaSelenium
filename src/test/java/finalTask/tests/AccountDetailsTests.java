@@ -3,7 +3,9 @@ package finalTask.tests;
 import finalTask.core.BaseTest;
 import finalTask.dataModels.AddressModel;
 import finalTask.pages.accountDetailsPage.AddressBookTab;
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -22,6 +24,8 @@ public class AccountDetailsTests extends BaseTest {
 
     @Test
     @Description("Verify that usr can add address")
+    @Feature("Address")
+    @AllureId("TC 5678")
     public void addAccountAddress(){
         street = "Street" + UUID.randomUUID();
         city = "City" + UUID.randomUUID();

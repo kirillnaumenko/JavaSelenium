@@ -55,6 +55,7 @@ public class AddressBookTab extends BasePage {
     }
 
     public void deleteAddress(String street){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("additional-addresses-table")));
         WebElement table = driver.findElement(By.cssSelector("#additional-addresses-table tbody"));
         List<WebElement> rows = table.findElements(By.tagName("tr"));
         WebElement row = rows.stream()

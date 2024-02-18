@@ -2,7 +2,9 @@ package finalTask.tests;
 
 import finalTask.dataModels.AccountModel;
 import finalTask.pages.accountDetailsPage.AccountDetailsPage;
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,6 +29,8 @@ public class AccountCreationTests extends BaseTest {
     @ParameterizedTest
     @MethodSource("credentials")
     @Description("Verify that user can log in under specific credentials")
+    @Feature("Logout feature")
+    @AllureId("TC 5678")
     public void loginTest(String user, String password){
 
         FrontPage frontPage = openWebSite()
@@ -37,6 +41,8 @@ public class AccountCreationTests extends BaseTest {
 
    @Test
    @Description("Verify that account can be created")
+   @Feature("Create account")
+   @AllureId("TC 5678")
    public void createAccountTest(){
        AccountModel model = new AccountModel();
        model.setFirstName("FirstName" + UUID.randomUUID().toString());

@@ -6,7 +6,9 @@ import finalTask.pages.ShoppingCartPage;
 import finalTask.pages.accountDetailsPage.AddressBookTab;
 import finalTask.pages.accountDetailsPage.MyWishlistTab;
 import finalTask.pages.productDetailsPage.ProductDetailsPage;
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -32,6 +34,8 @@ public class CartTests extends BaseTest {
     @ParameterizedTest
     @MethodSource("products")
     @Description("Verify that user can add products to cart")
+    @Feature("Cart")
+    @AllureId("TC 5678")
     public void addProductToCart(ArrayList<String> productList){
         cleanUpList = productList;
         int expectedSubTotal = 0;
