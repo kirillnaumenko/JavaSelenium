@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class SauceLabsDriver implements IDriverRunner{
     @Override
-    public WebDriver setupDriver() throws MalformedURLException {
+    public WebDriver setupDriver() {
         ChromeOptions browserOptions = new ChromeOptions();
         browserOptions.setPlatformName("Linux");
         browserOptions.setBrowserVersion("latest");
@@ -23,7 +23,12 @@ public class SauceLabsDriver implements IDriverRunner{
         sauceOptions.put("accessKey", Configuration.getSauceLabsAccessKey());
         browserOptions.setCapability("sauce:options", sauceOptions);
 
-        URL url = new URL(Configuration.getSauceLabsUrl());
+        URL url = null;
+        try {
+            url = new URL(Configuration.getSauceLabsUrl());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         WebDriver driver = new RemoteWebDriver(url, browserOptions);
         return driver;
     }

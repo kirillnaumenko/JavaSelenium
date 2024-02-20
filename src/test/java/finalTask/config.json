@@ -1,5 +1,5 @@
 {
-  "runner": "saucelabs",
+  "runner": "selenoid",
   "local": {
     "browser": "firefox"
   },

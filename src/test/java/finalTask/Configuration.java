@@ -1,15 +1,14 @@
 package finalTask;
 
 
-import org.json.simple.JSONArray;
+import lombok.extern.log4j.Log4j2;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+@Log4j2
 public class Configuration {
     private static final String CONFIG_FILE_PATH = "src/test/java/finalTask/config.json";
 
@@ -24,7 +23,7 @@ public class Configuration {
             // Convert the parsed object to a JSONObject
             config = (JSONObject) obj;
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 

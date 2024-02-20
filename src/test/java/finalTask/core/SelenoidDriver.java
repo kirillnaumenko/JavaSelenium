@@ -10,11 +10,16 @@ import java.net.URL;
 
 public class SelenoidDriver implements IDriverRunner{
     @Override
-    public WebDriver setupDriver() throws MalformedURLException {
+    public WebDriver setupDriver(){
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("firefox");
         capabilities.setVersion("121.0");
-        WebDriver driver = new RemoteWebDriver(new URL("http://" + Configuration.getSelenoidUrl() + ":" + Configuration.getSelenoidPort() + "/wd/hub"), capabilities);
+        WebDriver driver = null;
+        try {
+            driver = new RemoteWebDriver(new URL("http://" + Configuration.getSelenoidUrl() + ":" + Configuration.getSelenoidPort() + "/wd/hub"), capabilities);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         return driver;
     }
 }

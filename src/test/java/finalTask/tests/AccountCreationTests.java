@@ -44,11 +44,10 @@ public class AccountCreationTests extends BaseTest {
    @Feature("Create account")
    @AllureId("TC 5678")
    public void createAccountTest(){
-       AccountModel model = new AccountModel();
-       model.setFirstName("FirstName" + UUID.randomUUID().toString());
-       model.setLastName("LastName" + UUID.randomUUID().toString());
-       model.setEmail("Email" + UUID.randomUUID()+ "@domain.com");
-       model.setPassword("Test123?");
+       AccountModel model = new AccountModel("FirstName" + UUID.randomUUID(),
+               "LastName" + UUID.randomUUID(),
+               "Email" + UUID.randomUUID(),
+               "Test123?");
        AccountDetailsPage infoPage = openWebSite()
                 .clickCreateAccount()
                 .createAccount(model);

@@ -1,6 +1,21 @@
 package finalTask.dataModels;
 
 public class AddressModel {
+    private String streetAddress;
+    private String city;
+    private String stateOrProvince;
+    private String zipCode;
+    private String country;
+    private String phoneNumber;
+
+    public AddressModel(String streetAddress, String city, String stateOrProvince, String zipCode, String country, String phoneNumber) {
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.stateOrProvince = stateOrProvince;
+        this.zipCode = zipCode;
+        this.country = country;
+        this.phoneNumber = phoneNumber;
+    }
     public String getStreetAddress() {
         return streetAddress;
     }
@@ -46,21 +61,6 @@ public class AddressModel {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-    private String streetAddress;
-    private String city;
-    private String stateOrProvince;
-    private String zipCode;
-    private String country;
-    private String phoneNumber;
-
-    public AddressModel(String streetAddress, String city, String stateOrProvince, String zipCode, String country, String phoneNumber) {
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.stateOrProvince = stateOrProvince;
-        this.zipCode = zipCode;
-        this.country = country;
         this.phoneNumber = phoneNumber;
     }
 }

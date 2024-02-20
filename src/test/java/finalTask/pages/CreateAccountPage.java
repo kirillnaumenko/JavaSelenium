@@ -10,14 +10,19 @@ import org.openqa.selenium.support.FindBy;
 public class CreateAccountPage extends BasePage {
     @FindBy(id = "firstname")
     private WebElement firstNameInput;
+
     @FindBy(id = "lastname")
     private WebElement lastNameInput;
+
     @FindBy(id = "email_address")
     private WebElement emailInput;
+
     @FindBy(id = "password")
     private WebElement passwordInput;
+
     @FindBy(id = "password-confirmation")
     private WebElement confirmPasswordInput;
+
     @FindBy(css = ".primary .action")
     private WebElement createAccountButton;
 

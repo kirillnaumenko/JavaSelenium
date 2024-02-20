@@ -21,26 +21,14 @@ public abstract class BaseTest implements TestWatcher {
     public static WebDriver driver;
 
     @BeforeEach
-    public void setUp() throws MalformedURLException {
-        IDriverRunner runner = null;
-        switch (Configuration.getRunner()){
-            case "local":
-                runner = LocalBrowser.getInstance();
-                break;
-            case "selenoid":
-                runner = new SelenoidDriver();
-                break;
-            case "saucelabs":
-                runner = new SauceLabsDriver();
-                break;
-        }
-        driver = runner.setupDriver();
+    public void setUp() {
+        driver = Browser.getInstance().getBrowser();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @AfterEach
     public void cleanUp(){
-        LocalBrowser.getInstance().disposeBrowser();
+        Browser.getInstance().disposeBrowser();
     }
 
     public FrontPage openWebSite(){

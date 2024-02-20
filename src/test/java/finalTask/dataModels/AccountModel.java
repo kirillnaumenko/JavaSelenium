@@ -2,6 +2,18 @@ package finalTask.dataModels;
 
 public class AccountModel {
 
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+
+    public AccountModel(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -33,9 +45,4 @@ public class AccountModel {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
 }
