@@ -1,11 +1,10 @@
-package task60.pageFactory.pages;
+package finalTask.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import task60.pageFactory.core.BasePage;
+import finalTask.core.BasePage;
 
 public class SignInPage extends BasePage {
     @FindBy(id = "email")

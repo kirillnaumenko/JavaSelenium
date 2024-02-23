@@ -1,32 +1,34 @@
-package task60.pageFactory.core;
+package finalTask.core;
 
+import finalTask.Configuration;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import task60.Urls;
-import task60.WebDriverSingleton;
-import task60.pageFactory.pages.FrontPage;
+import finalTask.Urls;
+import finalTask.pages.FrontPage;
+
+import java.net.MalformedURLException;
 import java.time.Duration;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class BaseTest implements TestWatcher {
-    public WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeEach
-    public void setUp(){
-        driver = WebDriverSingleton.getInstance().getDriver();
+    public void setUp() {
+        driver = Browser.getInstance().getBrowser();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @AfterEach
     public void cleanUp(){
-        WebDriverSingleton.getInstance().disposeDriver();
+        Browser.getInstance().disposeBrowser();
     }
 
     public FrontPage openWebSite(){

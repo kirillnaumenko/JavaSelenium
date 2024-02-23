@@ -1,0 +1,15 @@
+{
+  "runner": "selenoid",
+  "local": {
+    "browser": "firefox"
+  },
+  "selenoid": {
+    "url": "localhost",
+    "port": "4444"
+  },
+  "saucelabs": {
+    "url": "https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
+    "username": "KirillNaumenko",
+    "accesskey": "f3201ecc-281c-45e8-ada8-e6ef100b542f"
+  }
+}
